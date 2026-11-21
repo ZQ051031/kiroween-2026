@@ -1,0 +1,8 @@
+{
+  "name": "haunted-hollow",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/browser.test.js"
+  }
+}

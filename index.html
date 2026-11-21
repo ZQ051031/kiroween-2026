@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#110e17">
+  <meta name="description" content="An illustrated Halloween escape house with three rooms, strange keepsakes, and two tools for your own Halloween night.">
+  <title>Haunted Hollow — A Halloween field guide</title>
+  <link rel="icon" href="assets/lantern.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#expedition">Skip to the expedition</a>
+  <header class="masthead">
+    <div class="bound header-inner">
+      <a class="brand" href="#top"><img src="assets/lantern.svg" alt="" width="34" height="34"><span>Haunted Hollow<small>EST. OCTOBER 1891</small></span></a>
+      <nav class="site-nav" aria-label="Field guide"><a href="#expedition">Explore</a><a href="#after-dark">After dark</a></nav>
+      <button id="sound" class="quiet sound" type="button" aria-pressed="false"><span aria-hidden="true">♫</span> <span id="sound-label">Sound off</span></button>
+    </div>
+  </header>
+  <main class="bound" id="top">
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow"><span aria-hidden="true">✦</span> THE HALLOWEEN FIELD GUIDE <span aria-hidden="true">✦</span></p>
+      <h1 id="page-title">Haunted <em>Hollow</em></h1>
+      <p>Three rooms. Three lost memories. One house that won’t let go.</p>
+    </section>
+    <section class="expedition" id="expedition" aria-label="The expedition">
+      <nav class="panel directory" aria-label="Rooms">
+        <p class="eyebrow">01 / FLOOR PLAN</p>
+        <h2>The House</h2>
+        <div id="rooms"></div>
+        <p class="directory-note"><span aria-hidden="true">☾</span> The house keeps everything you find, even if you leave.</p>
+      </nav>
+      <article class="panel chamber" aria-labelledby="room-name">
+        <div class="scene">
+          <img id="room-art" src="assets/foyer.svg" alt="A crooked house against an amber dusk, watched by bare trees and a pair of jack-o’-lanterns.">
+          <span class="scene-kicker" id="scene-kicker"></span>
+          <span class="fog" aria-hidden="true"></span>
+          <svg class="ghost" aria-hidden="true" viewBox="0 0 40 44"><path d="M4 37V20C4 6 12 1 20 1s16 5 16 19v17l-8-5-8 5-8-5z" fill="#e4cfed"/><path d="M14 16v6m12-6v6" stroke="#36243e" stroke-width="3" stroke-linecap="round"/></svg>
+          <img class="pumpkin" src="assets/lantern.svg" alt="" width="36" height="36">
+          <div id="hotspots" class="hotspots" role="group" aria-label="Explore the illustration"></div>
+        </div>
+        <div class="room-body">
+          <p class="eyebrow" id="room-number"></p>
+          <h2 id="room-name"></h2>
+          <p id="room-description"></p>
+          <div id="landmarks" class="landmarks" role="group" aria-label="Room landmarks"></div>
+          <p class="field-note" id="field-note" role="status" aria-atomic="true"></p>
+        </div>
+      </article>
+      <aside class="panel journal" aria-labelledby="journal-title">
+        <p class="eyebrow">02 / FIELD NOTES</p>
+        <h2 id="journal-title">Your Journal</h2>
+        <div class="score"><span><strong id="score">0</strong><small> / 150</small></span><span>HOLLOW SCORE</span></div>
+        <progress id="progress" max="150" value="0" aria-label="Hollow score out of 150"></progress>
+        <p id="seals" class="seals"></p>
+        <h3>Clues <span id="clue-count"></span></h3>
+        <ul id="clues" class="record"></ul>
+        <h3>Keepsakes <span id="item-count"></span></h3>
+        <ul id="items" class="record"></ul>
+        <button id="reset" class="quiet reset" type="button">↺ Reset progress</button>
+      </aside>
+    </section>
+    <section id="ending" class="panel ending" aria-labelledby="ending-title" hidden>
+      <p class="eyebrow">✦ ALL THREE MEMORIES RETURNED ✦</p>
+      <h2 id="ending-title">The house remembers.</h2>
+      <p>At last, the clock moves. Agnes has a name again, and a silver moon climbs through the glass. Behind you, three warm lights come on. Haunted Hollow isn’t keeping you here anymore. It’s leaving a light on.</p>
+    </section>
+    <section class="after-dark" id="after-dark" aria-labelledby="after-title">
+      <div class="section-heading"><p class="eyebrow">✦ THE FIELD GUIDE CONTINUES ✦</p><h2 id="after-title">After Dark</h2><p>Take a little of the Hollow home with you.</p></div>
+      <div class="tools">
+        <article class="panel activity">
+          <p class="eyebrow">03 / THE MIDNIGHT PRESS</p>
+          <h3>Spooky Story Generator</h3>
+          <p>Pick a visitor and a mood. The house will tell you what happened next.</p>
+          <form id="story-form">
+            <div class="choices"><label for="visitor">Your visitor<select id="visitor" name="visitor"><option value="caretaker">The last caretaker</option><option value="witch">A runaway witch</option><option value="ghost">A ghost with no name</option></select></label>
+              <label for="mood">The mood<select id="mood" name="mood"><option value="eerie">Eerie</option><option value="cozy">Cozy</option><option value="strange">Strange</option></select></label></div>
+            <button class="primary" type="submit">✦ Conjure a story</button>
+          </form>
+          <p id="story" class="story" role="status" aria-atomic="true"></p>
+        </article>
+        <article class="panel activity">
+          <p class="eyebrow">04 / THE HOST'S LEDGER</p>
+          <h3>Halloween Party Checklist</h3>
+          <p id="checklist-status" role="status" aria-atomic="true"></p>
+          <fieldset id="checklist"><legend class="sr-only">Party preparations</legend></fieldset>
+        </article>
+      </div>
+    </section>
+  </main>
+  <footer class="bound footer"><span>✦ HAUNTED HOLLOW</span><span>Mind the last step on your way out.</span></footer>
+  <dialog id="puzzle" aria-labelledby="puzzle-title">
+    <form id="puzzle-form">
+      <p class="eyebrow">A MEMORY SEAL</p>
+      <h2 id="puzzle-title"></h2>
+      <p id="puzzle-detail"></p>
+      <fieldset id="answers"><legend class="sr-only">Choose an answer</legend></fieldset>
+      <p id="puzzle-status" class="feedback" role="status" aria-atomic="true"></p>
+      <div class="dialog-actions"><button class="primary" id="submit-answer" type="submit">Try the seal</button><button class="quiet" data-close="puzzle" type="button">Close</button></div>
+    </form>
+  </dialog>
+  <dialog id="reset-dialog" aria-labelledby="reset-title">
+    <form method="dialog"><p class="eyebrow">THE HOUSE WILL FORGET</p><h2 id="reset-title">Reset your progress?</h2><p>Clear your clues, keepsakes, seals, and party checklist on this browser. You can start again at the foyer.</p><div class="dialog-actions"><button class="quiet" value="cancel" autofocus>Cancel</button><button class="primary" value="reset">Reset progress</button></div></form>
+  </dialog>
+</body>
+</html>
